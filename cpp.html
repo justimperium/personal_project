@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Lessons</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python.html">Python Lessons</a></li>
+                <li><a href="cpp.html">C++ Lessons</a></li>
+                <li><a href="quiz_python.html">Python Quiz</a></li>
+                <li><a href="quiz_cpp.html">C++ Quiz</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>C++ Lesson 1: Introduction</h1>
+            <p>This is the first C++ lesson. You'll learn about C++ basics and syntax.</p>
+        </section>
+        <section class="code-editor">
+            <h2>Try C++ Yourself:</h2>
+            <div id="editor">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, C++!";
+    return 0;
+}</div>
+            <button onclick="runCppCode()">Run Code</button>
+            <pre id="output"></pre>
+        </section>
+        <section class="navigation">
+            <button onclick="prevLesson()">Previous Lesson</button>
+            <button onclick="nextLesson()">Next Lesson</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Code Learning Platform</p>
+    </footer>
+    <script src="assets/js/script.js"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/c_cpp");
+
+        function runCppCode() {
+            var code = editor.getValue();
+            document.getElementById("output").innerText = "C++ Output: " + code; 
+        }
+
+        function prevLesson() {
+            alert("Go to previous C++ lesson");
+        }
+
+        function nextLesson() {
+            alert("Go to next C++ lesson");
+        }
+    </script>
+</body>
+</html>

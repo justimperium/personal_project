@@ -1,0 +1,7 @@
+Title: Functions in Python 
+Description: Functions allow you to define reusable blocks of code. 
+Example:
+def greet(name):
+    return "Hello, " + name
+print(greet("Alice"))
+Task: Create a function that adds two numbers.

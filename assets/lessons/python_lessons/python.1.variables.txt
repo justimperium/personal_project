@@ -1,0 +1,6 @@
+Title: Variables in Python
+Description: Variables in Python are used to store data of different types.
+Example:
+x = 5
+print(x)
+Task: Define a variable name with a string value and print it.

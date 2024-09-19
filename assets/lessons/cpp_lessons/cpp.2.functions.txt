@@ -1,0 +1,8 @@
+Title: Functions in C++ 
+Description: Functions in C++ allow for modular and reusable code. 
+Example:
+int add(int a, int b) {
+    return a + b;
+}
+std::cout << add(5, 3);
+Task: Write a function that multiplies two numbers.

@@ -1,0 +1,6 @@
+Title: Variables in C++ 
+Description: Variables store different types of data in C++. 
+Example:
+int x = 10;
+std::cout << x;
+Task: Declare a variable age and print it.

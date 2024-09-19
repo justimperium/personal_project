@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Lessons</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python.html">Python Lessons</a></li>
+                <li><a href="cpp.html">C++ Lessons</a></li>
+                <li><a href="quiz_python.html">Python Quiz</a></li>
+                <li><a href="quiz_cpp.html">C++ Quiz</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="lesson-content">
+            <!-- Lesson content will be loaded here -->
+        </section>
+        
+        <section class="code-editor">
+            <h2>Try Python Yourself:</h2>
+            <div id="editor">print("Hello, Python!")</div>
+            <button onclick="runPythonCode()">Run Code</button>
+            <pre id="output"></pre>
+        </section>
+        <section class="navigation">
+            <button onclick="prevLesson()">Previous Lesson</button>
+            <button onclick="nextLesson()">Next Lesson</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Code Learning Platform</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Fetch and display lesson content
+        function loadLesson(lessonFile) {
+            fetch(lessonFile)
+                .then(response => response.text())
+                .then(data => {
+                    // Split the content of the lesson by newlines
+                    const lines = data.split('\n');
+                    const title = lines[0]; // Title
+                    const about = lines[1]; // What it is about
+                    const intro = lines[3]; // Introduction
+                    const codeExample = lines[5]; // Code example
+                    const task = lines[7]; // Task
+
+                    // Inject the lesson into the DOM
+                    document.getElementById('lesson-content').innerHTML = `
+                        <section>
+                            <h1>${title}</h1>
+                            <p>${about}</p>
+                            <h2>Introduction</h2>
+                            <p>${intro}</p>
+                            <h2>Code Example</h2>
+                            <pre><code>${codeExample}</code></pre>
+                            <h2>Task</h2>
+                            <p>${task}</p>
+                        </section>
+                    `;
+                })
+                .catch(error => console.error('Error loading lesson:', error));
+        }
+
+        // Load the Python lesson 1 by default
+        loadLesson('lessons/python_lessons/python.1.variables.txt');
+
+        // Code execution logic for the editor
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/python");
+
+        function runPythonCode() {
+            var code = editor.getValue();
+            document.getElementById("output").innerText = "Python Output: " + code;
+        }
+
+        // Navigation (not implemented yet)
+        function prevLesson() {
+            alert("Go to previous Python lesson");
+        }
+
+        function nextLesson() {
+            alert("Go to next Python lesson");
+        }
+    </script>
+</body>
+</html>

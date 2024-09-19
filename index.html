@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Learning Platform - Home</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Google Font Tektur -->
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Ace Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python.html">Python Lessons</a></li>
+                <li><a href="cpp.html">C++ Lessons</a></li>
+                <li><a href="quiz_python.html">Python Quiz</a></li>
+                <li><a href="quiz_cpp.html">C++ Quiz</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Introduction Section -->
+        <section class="intro">
+            <h1>Welcome to the Code Learning Platform</h1>
+            <p>This platform is designed to help you learn Python and C++ through lessons.</p>
+        </section>
+
+        <!-- Dynamic Code Example -->
+        <section class="code-example">
+            <h2>Interactive Python Code Example</h2>
+            <div id="editor1">print("Hello, Python!")</div>
+            <button onclick="runPythonCode()">Run Code</button>
+            <pre id="output"></pre>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta">
+            <h2>Start Learning Now!</h2>
+            <p>Choose your language and dive into the lessons:</p>
+            <div class="button-group">
+                <a href="python.html"><button>Start Python Lessons</button></a>
+                <a href="cpp.html"><button>Start C++ Lessons</button></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Code Learning Platform</p>
+    </footer>
+
+    <script>
+        // Initialize the Ace editor and apply the theme and Python mode
+        var editor = ace.edit('editor1');
+        editor.setTheme("ace/theme/monokai");  // Dark theme for the editor
+        editor.session.setMode("ace/mode/python");  // Set Python syntax mode
+    
+        // Auto-resize functionality for the editor based on content
+        autoResizeEditor('editor1');
+    
+        // Function to simulate running Python code (limited functionality)
+        function runPythonCode() {
+            var code = editor.getValue();
+            
+            // Check for basic "print" statements and simulate output
+            let output = '';
+            if (code.startsWith('print(') && code.endsWith(')')) {
+                // Extract content between the parentheses
+                output = code.match(/print\((.*)\)/)[1];
+                output = output.replace(/["']/g, '');  // Remove quotes around strings
+            } else {
+                output = 'Unsupported operation or syntax error';  // Fallback for unsupported code
+            }
+    
+            document.getElementById('output').innerText = "Output: " + output;
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Learning Platform - Home</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python.html">Python Lessons</a></li>
+                <li><a href="cpp.html">C++ Lessons</a></li>
+                <li><a href="quiz_python.html">Python Quiz</a></li>
+                <li><a href="quiz_cpp.html">C++ Quiz</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Welcome to the Code Learning Platform</h1>
+            <p>Master Python and C++ through interactive lessons and quizzes.</p>
+        </section>
+
+        <section class="code-example">
+            <h2>Interactive Python Code Example</h2>
+            <div id="editor1">print("Hello, Python!")</div>
+            <button onclick="runPythonCode()">Run Code</button>
+            <pre id="output"></pre>
+        </section>
+
+        <section class="cta">
+            <h2>Start Learning Now!</h2>
+            <p>Choose your language to start lessons:</p>
+            <div class="button-group">
+                <a href="python.html"><button>Start Python Lessons</button></a>
+                <a href="cpp.html"><button>Start C++ Lessons</button></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Code Learning Platform</p>
+    </footer>
+
+    <script>
+        var editor = ace.edit('editor1');
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/python");
+
+        function runPythonCode() {
+            var code = editor.getValue();
+            const output = document.getElementById('output');
+            try {
+                let result = eval(Brython.run_python(code)); 
+                output.innerText = "Output: " + result;
+            } catch (error) {
+                output.innerText = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
